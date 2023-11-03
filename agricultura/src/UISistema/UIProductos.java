@@ -22,14 +22,7 @@ public class UIProductos extends JFrame {
 	private JTextField textField;
 	private JTextField txtAgregar;
 
-	/**
-	 * Launch the application.
-	 */
 	
-
-	/**
-	 * Create the frame.
-	 */
 	public UIProductos() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 850, 523);
@@ -58,7 +51,8 @@ public class UIProductos extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		textField = new JTextField();
-		textField.setBounds(315, 239, 216, 27);
+		textField.setFont(new Font("Arial", Font.PLAIN, 16));
+		textField.setBounds(315, 227, 216, 38);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
@@ -68,7 +62,8 @@ public class UIProductos extends JFrame {
 		contentPane.add(lblDigiteElCosto);
 		
 		txtAgregar = new JTextField();
-		txtAgregar.setBounds(314, 155, 217, 27);
+		txtAgregar.setFont(new Font("Arial", Font.PLAIN, 16));
+		txtAgregar.setBounds(315, 153, 216, 38);
 		contentPane.add(txtAgregar);
 		txtAgregar.setColumns(10);
 		
@@ -80,13 +75,13 @@ public class UIProductos extends JFrame {
 		JSpinner spinner = new JSpinner();
 		spinner.setModel(new SpinnerNumberModel(0, 0, 100, 1));
 		spinner.setFont(new Font("Arial", Font.PLAIN, 16));
-		spinner.setBounds(315, 313, 227, 27);
+		spinner.setBounds(315, 312, 227, 45);
 		contentPane.add(spinner);
 		
 		JButton btnNewButton_1 = new JButton("Agregar");
 		btnNewButton_1.setBackground(new Color(0, 128, 255));
 		btnNewButton_1.setFont(new Font("Arial Black", Font.PLAIN, 19));
-		btnNewButton_1.setBounds(282, 350, 300, 55);
+		btnNewButton_1.setBounds(282, 386, 300, 55);
 		contentPane.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Regresar");

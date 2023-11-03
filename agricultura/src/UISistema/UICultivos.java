@@ -21,14 +21,7 @@ public class UICultivos extends JFrame {
 	private JTextField textField;
 	private JTextField textField_1;
 
-	/**
-	 * Launch the application.
-	 */
 	
-
-	/**
-	 * Create the frame.
-	 */
 	public UICultivos() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 848, 580);
@@ -48,26 +41,28 @@ public class UICultivos extends JFrame {
 		JLabel lblCultivos = new JLabel("Agregar Cultivos\r\n");
 		lblCultivos.setForeground(new Color(0, 64, 0));
 		lblCultivos.setFont(new Font("Arial Black", Font.PLAIN, 22));
-		lblCultivos.setBounds(302, 40, 283, 40);
+		lblCultivos.setBounds(306, 27, 283, 40);
 		contentPane.add(lblCultivos);
 		
 		JLabel lblDigiteElNombre = new JLabel("Digite el nombre del cultivo");
 		lblDigiteElNombre.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblDigiteElNombre.setBounds(305, 88, 216, 27);
+		lblDigiteElNombre.setBounds(316, 62, 216, 27);
 		contentPane.add(lblDigiteElNombre);
 		
 		textField = new JTextField();
-		textField.setBounds(305, 125, 216, 27);
+		textField.setFont(new Font("Arial", Font.PLAIN, 16));
+		textField.setBounds(306, 97, 219, 38);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
 		JLabel lblDigiteElPrecio = new JLabel("Digite el precio que va a tener el cultivo");
 		lblDigiteElPrecio.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblDigiteElPrecio.setBounds(277, 162, 293, 27);
+		lblDigiteElPrecio.setBounds(277, 139, 293, 27);
 		contentPane.add(lblDigiteElPrecio);
 		
 		textField_1 = new JTextField();
-		textField_1.setBounds(305, 204, 216, 27);
+		textField_1.setFont(new Font("Arial", Font.PLAIN, 16));
+		textField_1.setBounds(302, 188, 216, 38);
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
 		

@@ -13,6 +13,7 @@ import java.awt.Color;
 import javax.swing.JTextField;
 import javax.swing.JSpinner;
 import javax.swing.ImageIcon;
+import javax.swing.SpinnerNumberModel;
 
 public class UiVender extends JFrame {
 
@@ -21,14 +22,7 @@ public class UiVender extends JFrame {
 	private JTextField textField;
 	private JTextField textField_1;
 
-	/**
-	 * Launch the application.
-	 */
 	
-
-	/**
-	 * Create the frame.
-	 */
 	public UiVender() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 797, 657);
@@ -53,11 +47,12 @@ public class UiVender extends JFrame {
 		
 		JLabel lblDigiteElNombre_1 = new JLabel("Digite el nombre del cultivo a vender");
 		lblDigiteElNombre_1.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblDigiteElNombre_1.setBounds(246, 120, 261, 27);
+		lblDigiteElNombre_1.setBounds(245, 107, 261, 27);
 		contentPane.add(lblDigiteElNombre_1);
 		
 		textField = new JTextField();
-		textField.setBounds(264, 240, 217, 27);
+		textField.setFont(new Font("Arial", Font.PLAIN, 16));
+		textField.setBounds(264, 230, 217, 40);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
@@ -67,7 +62,8 @@ public class UiVender extends JFrame {
 		contentPane.add(lblDigiteElNombre_1_1);
 		
 		textField_1 = new JTextField();
-		textField_1.setBounds(264, 157, 217, 26);
+		textField_1.setFont(new Font("Arial", Font.PLAIN, 16));
+		textField_1.setBounds(264, 144, 226, 40);
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
 		
@@ -77,6 +73,7 @@ public class UiVender extends JFrame {
 		contentPane.add(lblDigiteLaCantidad_1);
 		
 		JSpinner spinner = new JSpinner();
+		spinner.setModel(new SpinnerNumberModel(0, 0, 100, 1));
 		spinner.setFont(new Font("Arial", Font.PLAIN, 16));
 		spinner.setBounds(261, 314, 217, 40);
 		contentPane.add(spinner);

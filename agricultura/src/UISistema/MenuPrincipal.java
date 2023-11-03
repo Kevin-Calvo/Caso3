@@ -47,7 +47,7 @@ public class MenuPrincipal extends JFrame {
 	 */
 	public MenuPrincipal() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 540, 491);
+		setBounds(100, 100, 567, 491);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -56,7 +56,7 @@ public class MenuPrincipal extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Menu Principal");
-		lblNewLabel.setForeground(new Color(0, 64, 0));
+		lblNewLabel.setForeground(new Color(0, 128, 0));
 		lblNewLabel.setFont(new Font("Arial Black", Font.PLAIN, 40));
 		lblNewLabel.setBounds(80, 36, 359, 53);
 		contentPane.add(lblNewLabel);
@@ -134,7 +134,7 @@ public class MenuPrincipal extends JFrame {
 		
 		JLabel lblNewLabel_2 = new JLabel("New label");
 		lblNewLabel_2.setIcon(new ImageIcon("C:\\Users\\aquir\\Downloads\\_151ffaa0-4b7c-49df-b556-84b0c53a7366__1___1_-removebg-preview.png"));
-		lblNewLabel_2.setBounds(170, 335, 140, 119);
+		lblNewLabel_2.setBounds(189, 291, 140, 119);
 		contentPane.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("Cooperativa Agricola del Este  s.a");
@@ -144,14 +144,10 @@ public class MenuPrincipal extends JFrame {
 		lblNewLabel_1_1.setBounds(10, 0, 541, 39);
 		contentPane.add(lblNewLabel_1_1);
 		
-		JLabel lblNewLabel_1_1_1 = new JLabel("Bienvenido");
-		lblNewLabel_1_1_1.setForeground(new Color(0, 64, 0));
-		lblNewLabel_1_1_1.setFont(new Font("Arial Black", Font.PLAIN, 27));
-		lblNewLabel_1_1_1.setBackground(Color.WHITE);
-		lblNewLabel_1_1_1.setBounds(160, 297, 201, 39);
-		contentPane.add(lblNewLabel_1_1_1);
-		
 		JButton btnNewButton_5 = new JButton("Agricultor");
+		btnNewButton_5.setForeground(new Color(255, 255, 255));
+		btnNewButton_5.setBackground(new Color(0, 128, 0));
+		btnNewButton_5.setFont(new Font("Arial Black", Font.PLAIN, 16));
 		btnNewButton_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				UIAgricultor serv=new UIAgricultor();
