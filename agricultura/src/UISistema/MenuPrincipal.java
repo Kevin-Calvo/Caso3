@@ -134,7 +134,7 @@ public class MenuPrincipal extends JFrame {
 		
 		JLabel lblNewLabel_2 = new JLabel("New label");
 		lblNewLabel_2.setIcon(new ImageIcon("C:\\Users\\aquir\\Downloads\\_151ffaa0-4b7c-49df-b556-84b0c53a7366__1___1_-removebg-preview.png"));
-		lblNewLabel_2.setBounds(189, 291, 140, 119);
+		lblNewLabel_2.setBounds(192, 286, 140, 119);
 		contentPane.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("Cooperativa Agricola del Este  s.a");

@@ -38,67 +38,67 @@ public class UIAgricultor extends JFrame {
 		lblNewLabel_1_1_1.setForeground(new Color(0, 128, 64));
 		lblNewLabel_1_1_1.setFont(new Font("Arial Black", Font.PLAIN, 40));
 		lblNewLabel_1_1_1.setBackground(Color.WHITE);
-		lblNewLabel_1_1_1.setBounds(335, 10, 228, 58);
+		lblNewLabel_1_1_1.setBounds(349, 31, 228, 58);
 		contentPane.add(lblNewLabel_1_1_1);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setBounds(25, 99, 898, 566);
 		contentPane.add(tabbedPane);
 		
-		JPanel Agregar = new JPanel();
-		Agregar.setBackground(new Color(255, 255, 255));
-		tabbedPane.addTab("Agregar", null, Agregar, null);
-		Agregar.setLayout(null);
+		JPanel panel_3 = new JPanel();
+		panel_3.setBackground(new Color(255, 255, 255));
+		tabbedPane.addTab("Agregar", null, panel_3, null);
+		panel_3.setLayout(null);
 		
 		JLabel lblNewLabel_1_1_2 = new JLabel("Cooperativa Agricola del Este  s.a");
 		lblNewLabel_1_1_2.setForeground(new Color(0, 64, 0));
 		lblNewLabel_1_1_2.setFont(new Font("Arial Black", Font.PLAIN, 27));
 		lblNewLabel_1_1_2.setBackground(Color.WHITE);
 		lblNewLabel_1_1_2.setBounds(182, 10, 541, 39);
-		Agregar.add(lblNewLabel_1_1_2);
+		panel_3.add(lblNewLabel_1_1_2);
 		
 		JLabel lblAgregarAgricultor = new JLabel("Agregar Agricultor");
 		lblAgregarAgricultor.setFont(new Font("Arial Black", Font.PLAIN, 18));
 		lblAgregarAgricultor.setBounds(332, 52, 194, 26);
-		Agregar.add(lblAgregarAgricultor);
+		panel_3.add(lblAgregarAgricultor);
 		
 		JLabel lblNewLabel_1 = new JLabel("Digite el nombre del agricultor");
 		lblNewLabel_1.setFont(new Font("Arial", Font.PLAIN, 16));
 		lblNewLabel_1.setBounds(313, 88, 258, 22);
-		Agregar.add(lblNewLabel_1);
+		panel_3.add(lblNewLabel_1);
 		
 		textField = new JTextField();
 		textField.setFont(new Font("Arial", Font.PLAIN, 16));
 		textField.setBounds(313, 207, 212, 39);
-		Agregar.add(textField);
+		panel_3.add(textField);
 		textField.setColumns(10);
 		
 		JLabel lblNewLabel_1_2 = new JLabel("Digite la identificacion del asociado");
 		lblNewLabel_1_2.setFont(new Font("Arial", Font.PLAIN, 16));
 		lblNewLabel_1_2.setBounds(295, 175, 258, 22);
-		Agregar.add(lblNewLabel_1_2);
+		panel_3.add(lblNewLabel_1_2);
 		
 		textField_1 = new JTextField();
 		textField_1.setFont(new Font("Arial", Font.PLAIN, 16));
 		textField_1.setBounds(313, 124, 212, 41);
-		Agregar.add(textField_1);
+		panel_3.add(textField_1);
 		textField_1.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Agregar");
 		btnNewButton.setBackground(new Color(0, 255, 0));
 		btnNewButton.setFont(new Font("Arial Black", Font.PLAIN, 19));
 		btnNewButton.setBounds(313, 285, 212, 49);
-		Agregar.add(btnNewButton);
+		panel_3.add(btnNewButton);
 		
 		JLabel lblNewLabel_2_1 = new JLabel("New label");
 		lblNewLabel_2_1.setIcon(new ImageIcon("C:\\Users\\aquir\\Downloads\\_151ffaa0-4b7c-49df-b556-84b0c53a7366__1___1_-removebg-preview.png"));
 		lblNewLabel_2_1.setBounds(10, 410, 140, 119);
-		Agregar.add(lblNewLabel_2_1);
+		panel_3.add(lblNewLabel_2_1);
 		
 		JLabel lblNewLabel_3 = new JLabel("New label");
 		lblNewLabel_3.setIcon(new ImageIcon("C:\\Users\\aquir\\Downloads\\user_add (1).png"));
 		lblNewLabel_3.setBounds(351, 354, 149, 132);
-		Agregar.add(lblNewLabel_3);
+		panel_3.add(lblNewLabel_3);
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBackground(new Color(255, 255, 255));
@@ -233,7 +233,7 @@ public class UIAgricultor extends JFrame {
 		panel.add(lblNewLabel_4);
 		
 		JButton btnNewButton_1 = new JButton("Regresar");
-		btnNewButton_1.setBackground(new Color(134, 223, 183));
+		btnNewButton_1.setBackground(new Color(0, 128, 0));
 		btnNewButton_1.setFont(new Font("Arial Black", Font.PLAIN, 24));
 		btnNewButton_1.setBounds(25, 675, 204, 39);
 		contentPane.add(btnNewButton_1);

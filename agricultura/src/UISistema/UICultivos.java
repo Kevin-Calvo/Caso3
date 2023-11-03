@@ -55,7 +55,7 @@ public class UICultivos extends JFrame {
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
-		JLabel lblDigiteElPrecio = new JLabel("Digite el precio que va a tener el cultivo");
+		JLabel lblDigiteElPrecio = new JLabel("Digite el costo que va a tener el cultivo");
 		lblDigiteElPrecio.setFont(new Font("Arial", Font.PLAIN, 16));
 		lblDigiteElPrecio.setBounds(277, 139, 293, 27);
 		contentPane.add(lblDigiteElPrecio);
