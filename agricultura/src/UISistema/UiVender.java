@@ -14,6 +14,8 @@ import javax.swing.JTextField;
 import javax.swing.JSpinner;
 import javax.swing.ImageIcon;
 import javax.swing.SpinnerNumberModel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class UiVender extends JFrame {
 
@@ -40,6 +42,12 @@ public class UiVender extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		JButton btnNewButton = new JButton("Regresar");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				btnNewButton.setVisible(true);
+				dispose();
+			}
+		});
 		btnNewButton.setFont(new Font("Arial Black", Font.PLAIN, 16));
 		btnNewButton.setBackground(Color.GREEN);
 		btnNewButton.setBounds(10, 572, 165, 38);

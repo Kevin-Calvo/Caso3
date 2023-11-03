@@ -13,6 +13,8 @@ import javax.swing.JTextField;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.ImageIcon;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class UICultivos extends JFrame {
 
@@ -33,6 +35,13 @@ public class UICultivos extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton btnNewButton = new JButton("Regresar");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) { 
+				btnNewButton.setVisible(true);
+				dispose();
+				
+			}
+		});
 		btnNewButton.setFont(new Font("Arial Black", Font.PLAIN, 16));
 		btnNewButton.setBackground(Color.GREEN);
 		btnNewButton.setBounds(10, 495, 165, 38);

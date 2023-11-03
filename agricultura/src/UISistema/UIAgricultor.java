@@ -12,6 +12,8 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class UIAgricultor extends JFrame {
 
@@ -233,6 +235,12 @@ public class UIAgricultor extends JFrame {
 		panel.add(lblNewLabel_4);
 		
 		JButton btnNewButton_1 = new JButton("Regresar");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				btnNewButton.setVisible(true);
+				dispose();
+			}
+		});
 		btnNewButton_1.setBackground(new Color(0, 128, 0));
 		btnNewButton_1.setFont(new Font("Arial Black", Font.PLAIN, 24));
 		btnNewButton_1.setBounds(25, 675, 204, 39);

@@ -10,6 +10,8 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class UIServicios extends JFrame {
 
@@ -64,6 +66,12 @@ public class UIServicios extends JFrame {
 		contentPane.add(lblNewLabel_1_1);
 		
 		JButton btnNewButton_2_1 = new JButton("Regresar");
+		btnNewButton_2_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				btnNewButton.setVisible(true);
+				dispose();
+			}
+		});
 		btnNewButton_2_1.setFont(new Font("Arial Black", Font.PLAIN, 16));
 		btnNewButton_2_1.setBackground(new Color(0, 102, 0));
 		btnNewButton_2_1.setBounds(358, 233, 165, 38);
