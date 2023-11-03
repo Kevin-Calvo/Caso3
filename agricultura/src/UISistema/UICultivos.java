@@ -43,7 +43,7 @@ public class UICultivos extends JFrame {
 			}
 		});
 		btnNewButton.setFont(new Font("Arial Black", Font.PLAIN, 16));
-		btnNewButton.setBackground(Color.GREEN);
+		btnNewButton.setBackground(new Color(0, 128, 0));
 		btnNewButton.setBounds(10, 495, 165, 38);
 		contentPane.add(btnNewButton);
 		

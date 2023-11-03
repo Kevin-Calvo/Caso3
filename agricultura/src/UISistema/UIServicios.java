@@ -21,19 +21,13 @@ public class UIServicios extends JFrame {
 	
 	public UIServicios() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 869, 480);
+		setBounds(100, 100, 883, 511);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		JButton btnNewButton = new JButton("Regresar");
-		btnNewButton.setFont(new Font("Arial Black", Font.PLAIN, 16));
-		btnNewButton.setBackground(new Color(0, 255, 0));
-		btnNewButton.setBounds(10, 498, 165, 38);
-		contentPane.add(btnNewButton);
 		
 		JLabel lblServicios = new JLabel("Servicios que le ofrecemos\r\n");
 		lblServicios.setForeground(new Color(0, 64, 0));
@@ -49,33 +43,38 @@ public class UIServicios extends JFrame {
 		JButton btnNewButton_1 = new JButton("Prestamos");
 		btnNewButton_1.setBackground(new Color(128, 255, 128));
 		btnNewButton_1.setFont(new Font("Arial Black", Font.PLAIN, 19));
-		btnNewButton_1.setBounds(185, 133, 238, 61);
+		btnNewButton_1.setBounds(286, 190, 270, 61);
 		contentPane.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Venta de Productos");
 		btnNewButton_2.setBackground(new Color(128, 255, 128));
 		btnNewButton_2.setFont(new Font("Arial Black", Font.PLAIN, 19));
-		btnNewButton_2.setBounds(432, 133, 270, 61);
+		btnNewButton_2.setBounds(286, 119, 270, 61);
 		contentPane.add(btnNewButton_2);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("Cooperativa Agricola del Este  s.a");
 		lblNewLabel_1_1.setForeground(new Color(0, 128, 0));
 		lblNewLabel_1_1.setFont(new Font("Arial Black", Font.PLAIN, 27));
 		lblNewLabel_1_1.setBackground(Color.WHITE);
-		lblNewLabel_1_1.setBounds(159, 10, 541, 39);
+		lblNewLabel_1_1.setBounds(191, 10, 541, 39);
 		contentPane.add(lblNewLabel_1_1);
 		
 		JButton btnNewButton_2_1 = new JButton("Regresar");
 		btnNewButton_2_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				btnNewButton.setVisible(true);
+				btnNewButton_2_1.setVisible(true);
 				dispose();
 			}
 		});
 		btnNewButton_2_1.setFont(new Font("Arial Black", Font.PLAIN, 16));
 		btnNewButton_2_1.setBackground(new Color(0, 102, 0));
-		btnNewButton_2_1.setBounds(358, 233, 165, 38);
+		btnNewButton_2_1.setBounds(286, 273, 270, 61);
 		contentPane.add(btnNewButton_2_1);
+		
+		JLabel lblNewLabel_5 = new JLabel("New label");
+		lblNewLabel_5.setIcon(new ImageIcon("C:\\Users\\aquir\\Downloads\\customer_service_icon_800_wht (1).jpg"));
+		lblNewLabel_5.setBounds(349, 342, 149, 132);
+		contentPane.add(lblNewLabel_5);
 	}
 
 }

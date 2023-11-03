@@ -95,7 +95,7 @@ public class UIProductos extends JFrame {
 		});
 		btnNewButton_2.setFont(new Font("Arial Black", Font.PLAIN, 16));
 		btnNewButton_2.setBackground(new Color(0, 128, 0));
-		btnNewButton_2.setBounds(24, 421, 145, 55);
+		btnNewButton_2.setBounds(24, 431, 145, 45);
 		contentPane.add(btnNewButton_2);
 		
 		JLabel lblNewLabel_2 = new JLabel("New label");

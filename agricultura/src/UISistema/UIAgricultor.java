@@ -99,7 +99,7 @@ public class UIAgricultor extends JFrame {
 		
 		JLabel lblNewLabel_3 = new JLabel("New label");
 		lblNewLabel_3.setIcon(new ImageIcon("C:\\Users\\aquir\\Downloads\\user_add (1).png"));
-		lblNewLabel_3.setBounds(351, 354, 149, 132);
+		lblNewLabel_3.setBounds(352, 357, 149, 132);
 		panel_3.add(lblNewLabel_3);
 		
 		JPanel panel_2 = new JPanel();
@@ -143,7 +143,7 @@ public class UIAgricultor extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\aquir\\Downloads\\user_delete (1).png"));
-		lblNewLabel.setBounds(371, 252, 149, 132);
+		lblNewLabel.setBounds(370, 253, 149, 132);
 		panel_2.add(lblNewLabel);
 		
 		JPanel panel_1 = new JPanel();
@@ -187,7 +187,7 @@ public class UIAgricultor extends JFrame {
 		
 		JLabel lblNewLabel_5 = new JLabel("New label");
 		lblNewLabel_5.setIcon(new ImageIcon("C:\\Users\\aquir\\Downloads\\user_information (1).png"));
-		lblNewLabel_5.setBounds(375, 260, 149, 132);
+		lblNewLabel_5.setBounds(381, 273, 149, 132);
 		panel_1.add(lblNewLabel_5);
 		
 		JPanel panel = new JPanel();
