@@ -20,7 +20,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class UIServiosDisponible extends JFrame {
+public class UIServicioDisponible extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -34,7 +34,7 @@ public class UIServiosDisponible extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					UIServiosDisponible frame = new UIServiosDisponible();
+					UIServicioDisponible frame = new UIServicioDisponible();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -46,7 +46,7 @@ public class UIServiosDisponible extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public UIServiosDisponible() {
+	public UIServicioDisponible() {
 		setBackground(new Color(255, 255, 255));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 954, 587);

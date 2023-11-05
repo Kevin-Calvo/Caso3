@@ -18,7 +18,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 
-public class UICultivos extends JFrame {
+public class UICultivo extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -26,7 +26,7 @@ public class UICultivos extends JFrame {
 	private JTextField textField;
 
 	
-	public UICultivos() {
+	public UICultivo() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 788, 637);
 		contentPane = new JPanel();

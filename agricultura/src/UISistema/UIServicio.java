@@ -13,14 +13,14 @@ import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTable;
-import UISistema.UIServiosDisponible;
-public class UIServicios extends JFrame {
+import UISistema.UIServicioDisponible;
+public class UIServicio extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
 	
-	public UIServicios() {
+	public UIServicio() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 791, 399);
 		contentPane = new JPanel();
@@ -69,7 +69,7 @@ public class UIServicios extends JFrame {
 		btnNewButton.setBackground(new Color(0, 128, 0));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				UIServiosDisponible cult=new UIServiosDisponible();
+				UIServicioDisponible cult=new UIServicioDisponible();
 				cult.setVisible(true);
 				
 			}
