@@ -68,7 +68,7 @@ public class UIServiosDisponible extends JFrame {
 		lblNewLabel_1_1_1.setForeground(new Color(0, 64, 0));
 		lblNewLabel_1_1_1.setFont(new Font("Arial Black", Font.PLAIN, 27));
 		lblNewLabel_1_1_1.setBackground(Color.WHITE);
-		lblNewLabel_1_1_1.setBounds(292, 53, 314, 39);
+		lblNewLabel_1_1_1.setBounds(263, 59, 314, 39);
 		contentPane.add(lblNewLabel_1_1_1);
 		
 		JScrollPane scrollPane = new JScrollPane();
