@@ -15,8 +15,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 import UISistema.UICultivos;
-import UISistema.UIProductos;
+
 import UISistema.UIServicios;
+
+import UISistema.UIServiosDisponible;
 import UISistema.UiVender;
 
 import UISistema.UIAgricultor;
@@ -72,7 +74,7 @@ public class MenuPrincipal extends JFrame {
 		});
 		btnNewButton.setBackground(new Color(255, 0, 0));
 		btnNewButton.setFont(new Font("Arial Black", Font.PLAIN, 16));
-		btnNewButton.setBounds(270, 226, 140, 50);
+		btnNewButton.setBounds(176, 226, 140, 50);
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Cultivos");
@@ -87,20 +89,6 @@ public class MenuPrincipal extends JFrame {
 		});
 		btnNewButton_1.setBounds(104, 168, 145, 50);
 		contentPane.add(btnNewButton_1);
-		
-		JButton btnNewButton_2 = new JButton("Productos");
-		btnNewButton_2.setForeground(new Color(255, 255, 255));
-		btnNewButton_2.setBackground(new Color(0, 128, 0));
-		btnNewButton_2.setFont(new Font("Arial Black", Font.PLAIN, 16));
-		btnNewButton_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				UIProductos prod=new UIProductos();
-				prod.setVisible(true);
-			}
-		});
-		btnNewButton_2.setBounds(104, 226, 143, 50);
-		contentPane.add(btnNewButton_2);
 		
 		JButton btnNewButton_3 = new JButton("Servicios");
 		btnNewButton_3.setForeground(new Color(255, 255, 255));
