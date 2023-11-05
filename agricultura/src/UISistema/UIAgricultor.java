@@ -37,16 +37,16 @@ public class UIAgricultor extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel_1_1_1 = new JLabel("Agricultor");
-		lblNewLabel_1_1_1.setForeground(new Color(0, 128, 64));
+		lblNewLabel_1_1_1.setForeground(new Color(0, 64, 0));
 		lblNewLabel_1_1_1.setFont(new Font("Arial Black", Font.PLAIN, 40));
 		lblNewLabel_1_1_1.setBackground(Color.WHITE);
-		lblNewLabel_1_1_1.setBounds(160, 20, 228, 58);
+		lblNewLabel_1_1_1.setBounds(336, 41, 228, 58);
 		contentPane.add(lblNewLabel_1_1_1);
 		
 		JButton btnNewButton_1 = new JButton("Regresar");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				btnNewButton.setVisible(true);
+				btnNewButton_1.setVisible(true);
 				dispose();
 			}
 		});
@@ -61,7 +61,7 @@ public class UIAgricultor extends JFrame {
 		contentPane.add(lblNewLabel_2_1_1_1_1);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(34, 99, 898, 538);
+		scrollPane.setBounds(25, 109, 898, 538);
 		contentPane.add(scrollPane);
 		
 		table = new JTable();
@@ -108,5 +108,12 @@ public class UIAgricultor extends JFrame {
 		table.getColumnModel().getColumn(4).setPreferredWidth(76);
 		table.getColumnModel().getColumn(5).setPreferredWidth(100);
 		scrollPane.setViewportView(table);
+		
+		JLabel lblNewLabel_1_1 = new JLabel("Cooperativa Agricola del Este  s.a");
+		lblNewLabel_1_1.setForeground(new Color(0, 128, 0));
+		lblNewLabel_1_1.setFont(new Font("Arial Black", Font.PLAIN, 31));
+		lblNewLabel_1_1.setBackground(Color.WHITE);
+		lblNewLabel_1_1.setBounds(189, 13, 591, 39);
+		contentPane.add(lblNewLabel_1_1);
 	}
 }

@@ -28,7 +28,7 @@ public class UICultivos extends JFrame {
 	
 	public UICultivos() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 978, 637);
+		setBounds(100, 100, 788, 637);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -52,7 +52,7 @@ public class UICultivos extends JFrame {
 		JLabel lblCultivos = new JLabel("Agregar Cultivos\r\n");
 		lblCultivos.setForeground(new Color(0, 64, 0));
 		lblCultivos.setFont(new Font("Arial Black", Font.PLAIN, 22));
-		lblCultivos.setBounds(306, 27, 283, 40);
+		lblCultivos.setBounds(304, 28, 283, 40);
 		contentPane.add(lblCultivos);
 		
 		JLabel lblDigiteElNombre = new JLabel("Digite el nombre del cultivo");
@@ -85,12 +85,12 @@ public class UICultivos extends JFrame {
 		JButton btnNewButton_1 = new JButton("Agregar");
 		btnNewButton_1.setBackground(new Color(0, 128, 255));
 		btnNewButton_1.setFont(new Font("Arial Black", Font.PLAIN, 18));
-		btnNewButton_1.setBounds(261, 495, 293, 47);
+		btnNewButton_1.setBounds(274, 510, 293, 47);
 		contentPane.add(btnNewButton_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("New label");
 		lblNewLabel_2.setIcon(new ImageIcon("C:\\Users\\aquir\\Downloads\\_151ffaa0-4b7c-49df-b556-84b0c53a7366__1_-removebg-preview.png"));
-		lblNewLabel_2.setBounds(10, 10, 125, 110);
+		lblNewLabel_2.setBounds(0, -2, 125, 110);
 		contentPane.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("Cooperativa Agricola del Este  s.a");
@@ -123,7 +123,7 @@ public class UICultivos extends JFrame {
 		contentPane.add(lblSeleccioneElNombre);
 		
 		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(306, 441, 216, 38);
+		comboBox_1.setBounds(316, 441, 216, 38);
 		contentPane.add(comboBox_1);
 	}
 }

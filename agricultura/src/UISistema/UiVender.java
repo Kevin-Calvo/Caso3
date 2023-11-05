@@ -49,8 +49,8 @@ public class UiVender extends JFrame {
 			}
 		});
 		btnNewButton.setFont(new Font("Arial Black", Font.PLAIN, 16));
-		btnNewButton.setBackground(Color.GREEN);
-		btnNewButton.setBounds(277, 682, 165, 38);
+		btnNewButton.setBackground(new Color(0, 128, 0));
+		btnNewButton.setBounds(282, 682, 165, 38);
 		contentPane.add(btnNewButton);
 		
 		JLabel lblDigiteElNombre_1 = new JLabel("Digite el nombre del cultivo a vender");
@@ -60,7 +60,7 @@ public class UiVender extends JFrame {
 		
 		JLabel lblDigiteElNombre_1_1 = new JLabel("Precio total");
 		lblDigiteElNombre_1_1.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblDigiteElNombre_1_1.setBounds(298, 363, 99, 27);
+		lblDigiteElNombre_1_1.setBounds(317, 363, 99, 27);
 		contentPane.add(lblDigiteElNombre_1_1);
 		
 		JLabel lblDigiteLaCantidad_1 = new JLabel("Digite la cantidad de kilos a vender\r\n");
@@ -106,18 +106,18 @@ public class UiVender extends JFrame {
 		comboBox.setBounds(264, 142, 217, 40);
 		contentPane.add(comboBox);
 		
-		JLabel lblNewLabel_3 = new JLabel("New label");
-		lblNewLabel_3.setBounds(263, 400, 217, 37);
-		contentPane.add(lblNewLabel_3);
-		
 		JLabel lblDigiteElNombre_1_1_1 = new JLabel("Precio por unidad");
 		lblDigiteElNombre_1_1_1.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblDigiteElNombre_1_1_1.setBounds(277, 282, 149, 27);
+		lblDigiteElNombre_1_1_1.setBounds(298, 282, 149, 27);
 		contentPane.add(lblDigiteElNombre_1_1_1);
 		
-		JLabel lblNewLabel_4 = new JLabel("New label");
-		lblNewLabel_4.setBounds(263, 317, 217, 37);
-		contentPane.add(lblNewLabel_4);
+		JPanel panel = new JPanel();
+		panel.setBounds(266, 317, 214, 36);
+		contentPane.add(panel);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBounds(263, 395, 217, 38);
+		contentPane.add(panel_1);
 	}
 
 }
