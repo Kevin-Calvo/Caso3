@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTable;
 
 public class UIServicios extends JFrame {
 
@@ -76,5 +77,4 @@ public class UIServicios extends JFrame {
 		lblNewLabel_5.setBounds(349, 342, 149, 132);
 		contentPane.add(lblNewLabel_5);
 	}
-
 }

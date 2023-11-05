@@ -16,18 +16,19 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class UIProductos extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textField;
-	private JTextField txtAgregar;
 
 	
 	public UIProductos() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 850, 523);
+		setBounds(100, 100, 948, 668);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -63,12 +64,6 @@ public class UIProductos extends JFrame {
 		lblDigiteElCosto.setBounds(315, 192, 216, 27);
 		contentPane.add(lblDigiteElCosto);
 		
-		txtAgregar = new JTextField();
-		txtAgregar.setFont(new Font("Arial", Font.PLAIN, 16));
-		txtAgregar.setBounds(315, 153, 216, 38);
-		contentPane.add(txtAgregar);
-		txtAgregar.setColumns(10);
-		
 		JLabel lblDigiteLaCantidad = new JLabel("Digite la cantidad de productos a agregar\r\n\r\n");
 		lblDigiteLaCantidad.setFont(new Font("Arial", Font.PLAIN, 16));
 		lblDigiteLaCantidad.setBounds(282, 275, 300, 27);
@@ -95,7 +90,7 @@ public class UIProductos extends JFrame {
 		});
 		btnNewButton_2.setFont(new Font("Arial Black", Font.PLAIN, 16));
 		btnNewButton_2.setBackground(new Color(0, 128, 0));
-		btnNewButton_2.setBounds(24, 431, 145, 45);
+		btnNewButton_2.setBounds(346, 462, 145, 45);
 		contentPane.add(btnNewButton_2);
 		
 		JLabel lblNewLabel_2 = new JLabel("New label");
@@ -105,7 +100,7 @@ public class UIProductos extends JFrame {
 		
 		JLabel lblNewLabel_1 = new JLabel("New label");
 		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\aquir\\Downloads\\depositphotos_483669338-stock-il.png"));
-		lblNewLabel_1.setBounds(661, 314, 165, 162);
+		lblNewLabel_1.setBounds(769, 447, 165, 162);
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("Cooperativa Agricola del Este  s.a");
@@ -114,5 +109,11 @@ public class UIProductos extends JFrame {
 		lblNewLabel_1_1.setBackground(Color.WHITE);
 		lblNewLabel_1_1.setBounds(155, 10, 591, 39);
 		contentPane.add(lblNewLabel_1_1);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setFont(new Font("Arial", Font.PLAIN, 16));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Fertizantes", "Venenos", "Abonos", "Insecticidass", "Herbicidas", "Plagicidas", "Palas", "Picos", "Mangueras"}));
+		comboBox.setBounds(315, 147, 216, 38);
+		contentPane.add(comboBox);
 	}
 }
