@@ -14,11 +14,11 @@ import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-import UISistema.UICultivos;
+import UISistema.UICultivo;
 
-import UISistema.UIServicios;
+import UISistema.UIServicio;
 
-import UISistema.UIServiosDisponible;
+import UISistema.UIServicioDisponible;
 import UISistema.UiVender;
 
 import UISistema.UIAgricultor;
@@ -28,25 +28,6 @@ public class MenuPrincipal extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MenuPrincipal frame = new MenuPrincipal();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public MenuPrincipal() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 567, 491);
@@ -83,7 +64,7 @@ public class MenuPrincipal extends JFrame {
 		btnNewButton_1.setFont(new Font("Arial Black", Font.PLAIN, 16));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				UICultivos cult=new UICultivos();
+				UICultivo cult=new UICultivo();
 				cult.setVisible(true);
 			}
 		});
@@ -96,7 +77,7 @@ public class MenuPrincipal extends JFrame {
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				UIServicios serv=new UIServicios();
+				UIServicio serv=new UIServicio();
 				serv.setVisible(true);
 				
 				
