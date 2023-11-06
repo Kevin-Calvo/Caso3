@@ -27,6 +27,7 @@ public class UIServicioDisponible extends JFrame {
 	private JTable table;
 	private JTable table_1;
 
+
 	public UIServicioDisponible() {
 		setBackground(new Color(255, 255, 255));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
