@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Agricultores</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+ocultar<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cooperativa Agrícola S.A.</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header>
+    <h1>Cooperativa Agrícola S.A.</h1>
+    <h2>Libreta de Agricultor</h2>
+  </header>
+  <main>
+    <p>Número de teléfono:</p>
+    <input type="text" id="telefono" placeholder="Digite su número de teléfono" class="telefono">
+    <button onclick="consultar()" class="consulta">Consultar</button>
+    
+    <div class="info">
+      <button onclick="mostrarCultivos()" class="botonCultivos">Cultivos</button>
+      <button onclick="mostrarPedidos()" class="botonPedidos">Pedidos</button>
+      
+      <div class="agricultor">
+        <table>
+          <tr>
+            <th>Identificación</th>
+            <th>Apellidos</th>
+            <th>Nombre</th>
+            <th>Fecha de ingreso</th>
+            <th>Saldo (en colones)</th>
+          </tr>
+          <tr>
+            <td>13293</td>
+            <td>García Pérez</td>
+            <td>Esteban</td>
+            <td>02/03/2015</td>
+            <td>600000</td>
+          </tr>
+        </table>
+      </div>
+      
+      <div class="cultivos">
+        <table>
+          <tr>
+            <th>Fecha de cultivo</th>
+            <th>Cultivo</th>
+            <th>Cantidad (en kg)</th>
+            <th>Costo</th>
+            <th>Producto vendido (en kg)
+            <th>Producto vendido (en colones)</th>
+          </tr>
+          <tr>
+            <td>01/10/2020</td>
+            <td>Papa</td>
+            <td>450</td>
+            <td>600000</td>
+            <td>520</td>
+            <td>400000</td>
+          </tr>
+          <tr>
+            <td>01/10/2020</td>
+            <td>Lechuga</td>
+            <td>300</td>
+            <td>2800000</td>
+            <td>240</td>
+            <td>280000</td>
+          </tr>
+          <tr>
+            <td>17/02/2020</td>
+            <td>Tomate</td>
+            <td>600</td>
+            <td>600000</td>
+            <td>580</td>
+            <td>690000</td>
+          </tr>
+          <tr>
+            <td>12/09/2019</td>
+            <td>Arroz</td>
+            <td>400</td>
+            <td>380000</td>
+            <td>400</td>
+            <td>500000</td>
+          </tr>
+          <tr>
+            <td>23/04/2019</td>
+            <td>Sandía</td>
+            <td>560</td>
+            <td>530000</td>
+            <td>560</td>
+            <td>600000</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="pedidos">
+        <table>
+          <tr>
+            <th>Fecha de pedido</th>
+            <th>Pedido</th>
+            <th>Cantidad (en unidades)</th>
+            <th>Monto total</th>
+            <th>Monto pagado</th>
+          </tr>
+          <tr>
+            <td>01/10/2020</td>
+            <td>Fertilizante</td>
+            <td>20</td>
+            <td>24000</td>
+            <td>24000</td>
+          </tr>
+          <tr>
+            <td>23/09/2020</td>
+            <td>Préstamo</td>
+            <td>-</td>
+            <td>200000</td>
+            <td>180000</td>
+          </tr>
+          <tr>
+            <td>14/03/2020</td>
+            <td>Pesticida</td>
+            <td>30</td>
+            <td>29500</td>
+            <td>29500</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    
+  </main>
+</body>
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>

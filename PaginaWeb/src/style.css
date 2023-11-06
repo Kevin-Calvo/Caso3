@@ -1,0 +1,99 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  text-align: center;
+}
+
+header {
+  background-color: #383;
+  color: #fff;
+  padding: 1em;
+}
+
+h1 {
+  font-style: italic;
+    
+}
+
+h2 {
+  font-size: 20px;
+}
+
+p {
+  position: absolute;
+  top: 180px;
+  left: 40px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.botonCultivos {
+  position: absolute;
+  top: 420px;
+  left: 50px;
+}
+
+.botonPedidos {
+  position: absolute;
+  top: 420px;
+  left: 155px;
+}
+
+.consulta {
+  position: absolute;
+  top: 250px;
+  left: 50px;
+}
+
+.telefono {
+  position: absolute;
+  top: 220px;
+  left: 50px;
+}
+
+.info {
+  display: none;
+}
+
+.agricultor{
+  position: absolute;
+  top: 320px;
+  left: 60px;
+  width: 95%;
+  display: table;
+}
+
+.cultivos {
+  display: table;
+}
+
+.pedidos {
+  display: none;
+}
+
+.pedidos, .cultivos {
+  position: relative;
+  top: 300px;
+  left: 30px;
+  max-height: 100px;
+  overflow-y: scroll;
+}
+
+table {
+  border-collapse: collapse;
+  width: 95%;
+}
+
+th, td {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+th {
+  background-color: #f2f2f2;
+}
