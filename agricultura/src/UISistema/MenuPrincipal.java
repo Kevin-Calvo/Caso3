@@ -101,10 +101,10 @@ public class MenuPrincipal extends JFrame {
 		btnNewButton_4.setBounds(104, 110, 145, 48);
 		contentPane.add(btnNewButton_4);
 		
-		JLabel lblNewLabel_2 = new JLabel("New label");
-		lblNewLabel_2.setIcon(new ImageIcon("C:\\Users\\aquir\\Downloads\\_151ffaa0-4b7c-49df-b556-84b0c53a7366__1___1_-removebg-preview.png"));
-		lblNewLabel_2.setBounds(192, 286, 140, 119);
-		contentPane.add(lblNewLabel_2);
+		//JLabel lblNewLabel_2 = new JLabel("New label");
+		//lblNewLabel_2.setIcon(new ImageIcon("C:\\Users\\aquir\\Downloads\\_151ffaa0-4b7c-49df-b556-84b0c53a7366__1___1_-removebg-preview.png"));
+		//lblNewLabel_2.setBounds(192, 286, 140, 119);
+		//contentPane.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("Cooperativa Agricola del Este  s.a");
 		lblNewLabel_1_1.setForeground(new Color(0, 64, 0));

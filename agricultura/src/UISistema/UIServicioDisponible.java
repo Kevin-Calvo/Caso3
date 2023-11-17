@@ -81,8 +81,8 @@ public class UIServicioDisponible extends JFrame {
 		scrollPane.setViewportView(table_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("New label");
-		lblNewLabel_2.setIcon(new ImageIcon("C:\\Users\\aquir\\Downloads\\_151ffaa0-4b7c-49df-b556-84b0c53a7366__1___1_-removebg-preview.png"));
-		lblNewLabel_2.setBounds(0, -18, 126, 136);
+		//lblNewLabel_2.setIcon(new ImageIcon("C:\\Users\\aquir\\Downloads\\_151ffaa0-4b7c-49df-b556-84b0c53a7366__1___1_-removebg-preview.png"));
+		//lblNewLabel_2.setBounds(0, -18, 126, 136);
 		contentPane.add(lblNewLabel_2);
 		
 		JButton btnNewButton = new JButton("Regresar");

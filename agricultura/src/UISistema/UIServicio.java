@@ -36,10 +36,10 @@ public class UIServicio extends JFrame {
 		lblServicios.setBounds(201, 56, 470, 40);
 		contentPane.add(lblServicios);
 		
-		JLabel lblNewLabel_2 = new JLabel("New label");
-		lblNewLabel_2.setIcon(new ImageIcon("C:\\Users\\aquir\\Downloads\\_151ffaa0-4b7c-49df-b556-84b0c53a7366__1_-removebg-preview.png"));
-		lblNewLabel_2.setBounds(10, -15, 126, 136);
-		contentPane.add(lblNewLabel_2);
+		//JLabel lblNewLabel_2 = new JLabel("New label");
+		//lblNewLabel_2.setIcon(new ImageIcon("C:\\Users\\aquir\\Downloads\\_151ffaa0-4b7c-49df-b556-84b0c53a7366__1_-removebg-preview.png"));
+		//lblNewLabel_2.setBounds(10, -15, 126, 136);
+		//contentPane.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("Cooperativa Agricola del Este  s.a");
 		lblNewLabel_1_1.setForeground(new Color(0, 128, 0));
@@ -60,10 +60,10 @@ public class UIServicio extends JFrame {
 		btnNewButton_2_1.setBounds(283, 173, 270, 61);
 		contentPane.add(btnNewButton_2_1);
 		
-		JLabel lblNewLabel_5 = new JLabel("New label");
-		lblNewLabel_5.setIcon(new ImageIcon("C:\\Users\\aquir\\Downloads\\customer_service_icon_800_wht (1).jpg"));
-		lblNewLabel_5.setBounds(337, 244, 149, 132);
-		contentPane.add(lblNewLabel_5);
+		//JLabel lblNewLabel_5 = new JLabel("New label");
+		//lblNewLabel_5.setIcon(new ImageIcon("C:\\Users\\aquir\\Downloads\\customer_service_icon_800_wht (1).jpg"));
+		//lblNewLabel_5.setBounds(337, 244, 149, 132);
+		//contentPane.add(lblNewLabel_5);
 		
 		JButton btnNewButton = new JButton("Prestamos y pedidos");
 		btnNewButton.setBackground(new Color(0, 128, 0));

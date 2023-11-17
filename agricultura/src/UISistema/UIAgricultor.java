@@ -16,6 +16,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+import Mongo.RepositoryFacade;
+
 import javax.swing.border.BevelBorder;
 import javax.swing.JScrollPane;
 
@@ -24,9 +27,16 @@ public class UIAgricultor extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTable table;
-
+	private JTextField nombre;
+	private JTextField apellidos;
+	private JTextField identificacion;
+	private JTextField numero;
+	private JTextField zona;
+	private JTextField fecha;
 	
 	public UIAgricultor() {
+		RepositoryFacade repository= RepositoryFacade.getRepositoryFacade();
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 956, 761);
 		contentPane = new JPanel();
@@ -55,51 +65,18 @@ public class UIAgricultor extends JFrame {
 		btnNewButton_1.setBounds(25, 675, 204, 39);
 		contentPane.add(btnNewButton_1);
 		
-		JLabel lblNewLabel_2_1_1_1_1 = new JLabel("New label");
-		lblNewLabel_2_1_1_1_1.setIcon(new ImageIcon("C:\\Users\\aquir\\Downloads\\_151ffaa0-4b7c-49df-b556-84b0c53a7366__1___1_-removebg-preview.png"));
-		lblNewLabel_2_1_1_1_1.setBounds(10, -18, 140, 119);
-		contentPane.add(lblNewLabel_2_1_1_1_1);
+		//JLabel lblNewLabel_2_1_1_1_1 = new JLabel("New label");
+		//lblNewLabel_2_1_1_1_1.setIcon(new ImageIcon("C:\\Users\\aquir\\Downloads\\_151ffaa0-4b7c-49df-b556-84b0c53a7366__1___1_-removebg-preview.png"));
+		//lblNewLabel_2_1_1_1_1.setBounds(10, -18, 140, 119);
+		//contentPane.add(lblNewLabel_2_1_1_1_1);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(25, 109, 898, 538);
+		scrollPane.setBounds(25, 109, 898, 480);
 		contentPane.add(scrollPane);
 		
 		table = new JTable();
 		table.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-			},
+				repository.mostrarAgricultoresTabla(),
 			new String[] {
 				"Nombre", "Apellidos", "Identificacion", "Numero de Telefono", "Zona", "Fecha de Registro"
 			}
@@ -115,5 +92,95 @@ public class UIAgricultor extends JFrame {
 		lblNewLabel_1_1.setBackground(Color.WHITE);
 		lblNewLabel_1_1.setBounds(189, 13, 591, 39);
 		contentPane.add(lblNewLabel_1_1);
+		
+		nombre = new JTextField();
+		nombre.setFont(new Font("Arial", Font.PLAIN, 16));
+		nombre.setBounds(25, 600, 135, 28);
+		contentPane.add(nombre);
+		nombre.setColumns(10);
+		
+		apellidos = new JTextField();
+		apellidos.setFont(new Font("Arial", Font.PLAIN, 16));
+		apellidos.setBounds(165, 600, 135, 28);
+		contentPane.add(apellidos);
+		apellidos.setColumns(10);
+		
+		identificacion = new JTextField();
+		identificacion.setFont(new Font("Arial", Font.PLAIN, 16));
+		identificacion.setBounds(305, 600, 130, 28);
+		contentPane.add(identificacion);
+		identificacion.setColumns(10);
+		
+		numero = new JTextField();
+		numero.setFont(new Font("Arial", Font.PLAIN, 16));
+		numero.setBounds(440, 600, 160, 28);
+		contentPane.add(numero);
+		numero.setColumns(10);
+		
+		zona = new JTextField();
+		zona.setFont(new Font("Arial", Font.PLAIN, 16));
+		zona.setBounds(607, 600, 135, 28);
+		contentPane.add(zona);
+		zona.setColumns(10);
+		
+		fecha = new JTextField();
+		fecha.setFont(new Font("Arial", Font.PLAIN, 16));
+		fecha.setBounds(747, 600, 160, 28);
+		contentPane.add(fecha);
+		fecha.setColumns(10);
+		
+		JButton btnNewButton = new JButton("Agregar");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String nombreAgricultor = nombre.getText();
+				String apellidoAgricultor = apellidos.getText();
+				int identifiacionAgricultor = 0;
+				int numeroAgricultor = 0;
+				String zonaAgricultor = zona.getText();
+				String fechaAgricultor = fecha.getText();
+				try {
+					identifiacionAgricultor = Integer.parseInt(identificacion.getText());
+				} catch (NumberFormatException e1) {
+					System.out.println("Identificacion no es formato numerico");
+					e1.printStackTrace();
+					return;
+				}
+				
+				try {
+					numeroAgricultor = Integer.parseInt(numero.getText());
+				} catch (NumberFormatException e1) {
+					System.out.println("Numero Telefonico no es formato numerico");
+					e1.printStackTrace();
+					return;
+				}
+				
+				if ((nombreAgricultor != "") && (apellidoAgricultor != "") && (zonaAgricultor != "") && (fechaAgricultor != ""))
+				{
+					repository.agregarAgricultor(nombreAgricultor, apellidoAgricultor, identifiacionAgricultor, numeroAgricultor, zonaAgricultor, fechaAgricultor);
+					
+					nombre.setText("");
+					apellidos.setText("");
+					identificacion.setText("");
+					numero.setText("");
+					zona.setText("");
+					fecha.setText("");
+					
+					table.setModel(new DefaultTableModel(
+							repository.mostrarAgricultoresTabla(),
+						new String[] {
+							"Nombre", "Apellidos", "Identificacion", "Numero de Telefono", "Zona", "Fecha de Registro"
+						}
+					));
+				}
+				
+				btnNewButton.setVisible(true);
+			}
+		});
+		
+		btnNewButton.setBackground(new Color(0, 128, 0));
+		btnNewButton.setFont(new Font("Arial Black", Font.PLAIN, 24));
+		btnNewButton.setBounds(685, 675, 204, 39);
+		contentPane.add(btnNewButton);
+			
 	}
 }

@@ -5,6 +5,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Mongo.InventarioRepository;
+import Mongo.RepositoryFacade;
+
 import javax.swing.JLayeredPane;
 import javax.swing.JButton;
 import java.awt.Font;
@@ -15,6 +19,7 @@ import javax.swing.JSpinner;
 import javax.swing.ImageIcon;
 import javax.swing.SpinnerNumberModel;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
@@ -26,6 +31,8 @@ public class UiVender extends JFrame {
 
 	
 	public UiVender() {
+		RepositoryFacade repository= RepositoryFacade.getRepositoryFacade();
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 761, 767);
 		contentPane = new JPanel();
@@ -75,22 +82,16 @@ public class UiVender extends JFrame {
 		spinner.setBounds(263, 232, 217, 40);
 		contentPane.add(spinner);
 		
-		JLabel lblNewLabel_1 = new JLabel("New label");
-		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\aquir\\Downloads\\set-of-different-vegetables-cartoon-free-vector (1).jpg"));
-		lblNewLabel_1.setBounds(224, 514, 256, 160);
-		contentPane.add(lblNewLabel_1);
+		//JLabel lblNewLabel_1 = new JLabel("New label");
+		//lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\aquir\\Downloads\\set-of-different-vegetables-cartoon-free-vector (1).jpg"));
+		//lblNewLabel_1.setBounds(224, 514, 256, 160);
+		//contentPane.add(lblNewLabel_1);
 		
-		JButton btnNewButton_1 = new JButton("Vender");
-		btnNewButton_1.setForeground(new Color(0, 0, 0));
-		btnNewButton_1.setBackground(new Color(0, 128, 255));
-		btnNewButton_1.setFont(new Font("Arial Black", Font.PLAIN, 22));
-		btnNewButton_1.setBounds(235, 458, 271, 46);
-		contentPane.add(btnNewButton_1);
 		
-		JLabel lblNewLabel_2 = new JLabel("New label");
-		lblNewLabel_2.setIcon(new ImageIcon("C:\\Users\\aquir\\Downloads\\_151ffaa0-4b7c-49df-b556-84b0c53a7366__1_-removebg-preview.png"));
-		lblNewLabel_2.setBounds(10, 10, 125, 110);
-		contentPane.add(lblNewLabel_2);
+		//JLabel lblNewLabel_2 = new JLabel("New label");
+		//lblNewLabel_2.setIcon(new ImageIcon("C:\\Users\\aquir\\Downloads\\_151ffaa0-4b7c-49df-b556-84b0c53a7366__1_-removebg-preview.png"));
+		//lblNewLabel_2.setBounds(10, 10, 125, 110);
+		//contentPane.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("Cooperativa Agricola del Este  s.a");
 		lblNewLabel_1_1.setForeground(new Color(0, 128, 0));
@@ -99,14 +100,16 @@ public class UiVender extends JFrame {
 		lblNewLabel_1_1.setBounds(131, 10, 541, 39);
 		contentPane.add(lblNewLabel_1_1);
 		
+		ArrayList<String> listaProducto = repository.obtenerListaNombreProducto();
+		String[] productos = listaProducto.toArray(new String[listaProducto.size()]);
 		JComboBox comboBox = new JComboBox();
 		comboBox.setBackground(new Color(255, 255, 255));
 		comboBox.setFont(new Font("Arial", Font.PLAIN, 16));
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Papa", "Chayote", "Ayote", "Camote", "Tomates", "Platanos", "Bananos", "Cebolla", "Fresas", "Limones", "Sapayo", "Lechuga", "Coliflor", "Remolacha", "Repollo verde", "Repollo morado", "Zanahoria", "Maiz", "Rabano"}));
+		comboBox.setModel(new DefaultComboBoxModel(productos));
 		comboBox.setBounds(264, 142, 217, 40);
 		contentPane.add(comboBox);
 		
-		JLabel lblDigiteElNombre_1_1_1 = new JLabel("Precio por unidad");
+		JLabel lblDigiteElNombre_1_1_1 = new JLabel("Precio por kilo");
 		lblDigiteElNombre_1_1_1.setFont(new Font("Arial", Font.PLAIN, 16));
 		lblDigiteElNombre_1_1_1.setBounds(298, 282, 149, 27);
 		contentPane.add(lblDigiteElNombre_1_1_1);
@@ -118,6 +121,21 @@ public class UiVender extends JFrame {
 		JPanel panel_1 = new JPanel();
 		panel_1.setBounds(263, 395, 217, 38);
 		contentPane.add(panel_1);
+		
+		JButton btnNewButton_1 = new JButton("Vender");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String cultivo = (String) comboBox.getSelectedItem();
+				int cantidad = (int) spinner.getValue(); 
+				repository.VenderCultivo(cultivo, cantidad);
+			}
+		});
+		
+		btnNewButton_1.setForeground(new Color(0, 0, 0));
+		btnNewButton_1.setBackground(new Color(0, 128, 255));
+		btnNewButton_1.setFont(new Font("Arial Black", Font.PLAIN, 22));
+		btnNewButton_1.setBounds(235, 458, 271, 46);
+		contentPane.add(btnNewButton_1);
 	}
 
 }
