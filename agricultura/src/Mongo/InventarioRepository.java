@@ -16,7 +16,7 @@ public class InventarioRepository {
 	private MongoDatabase database;
 	private MongoCollection<Document> collection;
 	
-	InventarioRepository() {
+	public InventarioRepository() {
 		 mongoClient = MongoClients.create("mongodb://localhost:27017"); //Conecta con mongo
 	     database = mongoClient.getDatabase("Cooperativa");  //conecta con base de datos 
 	     collection = database.getCollection("Inventario"); //permite interaccion
@@ -45,42 +45,52 @@ public class InventarioRepository {
 		collection.updateOne(documento, actualizacion);
 	}
 	
-	public boolean confirmarCantidadEnInventario(int cantidadSolicitada) {
+	public boolean confirmarCantidadEnInventario(int cantidadSolicitada, String cultivo) {
 		int cantidadInventario = 0;
 		FindIterable<Document> documents =  collection.find();
 		
 		for (Document documento : documents) {
-			cantidadInventario += documento.getInteger("cantidad"); 
+			String nombre_cultivo = documento.getString("cultivo");
+			if ((nombre_cultivo).trim().equals(cultivo.trim()))
+				cantidadInventario += documento.getInteger("cantidad"); 
 		}
+		System.out.println(cantidadInventario); 
+		return cantidadInventario < cantidadSolicitada;
+	}
+	
+	public Document encontrarMasAntiguo(String cultivo) {
+		FindIterable<Document> documents =  collection.find();
+	
+		Document fifo = null; 
+		for (Document documento : documents) {
+			String nombre_cultivo = documento.getString("cultivo");
+			
 		
-		return cantidadInventario >= cantidadSolicitada;
+			if ((nombre_cultivo).trim().equals(cultivo.trim()))
+			{
+				if (fifo == null)
+				{
+					fifo = documento;
+				}
+				else {
+					if(fifo.getDate("cosecha").compareTo(documento.getDate("cosecha")) >= 0)
+						fifo = documento; 
+				}
+				
+			}
+		}
+		return fifo;
 	}
 	
 	public void venderCultivo(String cultivo, int cantidad)
 	{
-		FindIterable<Document> documents =  collection.find();
-
+		//FindIterable<Document> documents =  collection.find();
+		
 		while (cantidad != 0)
 		{
-			Document fifo = null; 
-			for (Document documento : documents) {
-				String nombre_cultivo = documento.getString("cultivo");
-				
+			System.out.println(cantidad); 
+			Document fifo = encontrarMasAntiguo(cultivo); 
 			
-				if ((nombre_cultivo).trim().equals(cultivo.trim()))
-				{
-					if (fifo == null)
-					{
-						fifo = documento;
-					}
-					else {
-						if(fifo.getDate("cosecha").compareTo(documento.getDate("cosecha")) >= 0)
-							fifo = documento; 
-					}
-					
-				}
-				 
-			}
 			if (fifo != null)
 			{ 
 				if (fifo.getInteger("cantidad") <= cantidad)
@@ -95,6 +105,43 @@ public class InventarioRepository {
 					actualizarCantidadCultivo(fifo, nueva_cantidad); 
 				}	
 			}
+			else
+			{
+				break;
+			}
 		}	
+	}
+	
+	public float calcularPrecioKilo(String cultivo, int cantidad)
+	{
+		int productosRestantes = cantidad; 
+		int precioXkilo = 0;
+		FindIterable<Document> documents =  collection.find().sort(new Document("cosecha", 1));
+		for (Document documento : documents) {
+			if (productosRestantes == 0)
+				break;
+			else
+			{
+				String nombre_cultivo = documento.getString("cultivo");
+				if ((nombre_cultivo).trim().equals(cultivo.trim()))
+				{
+					if (documento.getInteger("cantidad") <= productosRestantes)
+					{
+						productosRestantes -= documento.getInteger("cantidad");
+						precioXkilo += (documento.getInteger("cantidad") * documento.getInteger("costo")); 
+					}
+					else
+					{
+						precioXkilo += (productosRestantes * documento.getInteger("costo")); 
+						productosRestantes = 0;
+					}	
+				}
+			}
+			
+		}
+		
+		precioXkilo = precioXkilo / cantidad;
+		
+		return precioXkilo;
 	}
 }

@@ -17,7 +17,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import Mongo.RepositoryFacade;
+import Objetos.SistemaCentralizado;
 
 import javax.swing.border.BevelBorder;
 import javax.swing.JScrollPane;
@@ -35,7 +35,7 @@ public class UIAgricultor extends JFrame {
 	private JTextField fecha;
 	
 	public UIAgricultor() {
-		RepositoryFacade repository= RepositoryFacade.getRepositoryFacade();
+		SistemaCentralizado sistema = SistemaCentralizado.getSistemaCentralizado();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 956, 761);
@@ -76,7 +76,7 @@ public class UIAgricultor extends JFrame {
 		
 		table = new JTable();
 		table.setModel(new DefaultTableModel(
-				repository.mostrarAgricultoresTabla(),
+				sistema.mostrarAgricultoresTabla(),
 			new String[] {
 				"Nombre", "Apellidos", "Identificacion", "Numero de Telefono", "Zona", "Fecha de Registro"
 			}
@@ -156,7 +156,7 @@ public class UIAgricultor extends JFrame {
 				
 				if ((nombreAgricultor != "") && (apellidoAgricultor != "") && (zonaAgricultor != "") && (fechaAgricultor != ""))
 				{
-					repository.agregarAgricultor(nombreAgricultor, apellidoAgricultor, identifiacionAgricultor, numeroAgricultor, zonaAgricultor, fechaAgricultor);
+					sistema.agregarAgricultor(nombreAgricultor, apellidoAgricultor, identifiacionAgricultor, numeroAgricultor, zonaAgricultor, fechaAgricultor);
 					
 					nombre.setText("");
 					apellidos.setText("");
@@ -166,7 +166,7 @@ public class UIAgricultor extends JFrame {
 					fecha.setText("");
 					
 					table.setModel(new DefaultTableModel(
-							repository.mostrarAgricultoresTabla(),
+							sistema.mostrarAgricultoresTabla(),
 						new String[] {
 							"Nombre", "Apellidos", "Identificacion", "Numero de Telefono", "Zona", "Fecha de Registro"
 						}

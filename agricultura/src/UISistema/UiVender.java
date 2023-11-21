@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Mongo.InventarioRepository;
-import Mongo.RepositoryFacade;
+import Objetos.SistemaCentralizado;
 
 import javax.swing.JLayeredPane;
 import javax.swing.JButton;
@@ -28,10 +28,13 @@ public class UiVender extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	boolean preciosCalculados = false;
+	float costoXunidad;
+	float valorTotal;
 
 	
 	public UiVender() {
-		RepositoryFacade repository= RepositoryFacade.getRepositoryFacade();
+		SistemaCentralizado sistema = SistemaCentralizado.getSistemaCentralizado();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 761, 767);
@@ -65,10 +68,7 @@ public class UiVender extends JFrame {
 		lblDigiteElNombre_1.setBounds(245, 107, 261, 27);
 		contentPane.add(lblDigiteElNombre_1);
 		
-		JLabel lblDigiteElNombre_1_1 = new JLabel("Precio total");
-		lblDigiteElNombre_1_1.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblDigiteElNombre_1_1.setBounds(317, 363, 99, 27);
-		contentPane.add(lblDigiteElNombre_1_1);
+		
 		
 		JLabel lblDigiteLaCantidad_1 = new JLabel("Digite la cantidad de kilos a vender\r\n");
 		lblDigiteLaCantidad_1.setFont(new Font("Arial", Font.PLAIN, 16));
@@ -100,7 +100,7 @@ public class UiVender extends JFrame {
 		lblNewLabel_1_1.setBounds(131, 10, 541, 39);
 		contentPane.add(lblNewLabel_1_1);
 		
-		ArrayList<String> listaProducto = repository.obtenerListaNombreProducto();
+		ArrayList<String> listaProducto = sistema.obtenerListaNombreProducto();
 		String[] productos = listaProducto.toArray(new String[listaProducto.size()]);
 		JComboBox comboBox = new JComboBox();
 		comboBox.setBackground(new Color(255, 255, 255));
@@ -109,25 +109,59 @@ public class UiVender extends JFrame {
 		comboBox.setBounds(264, 142, 217, 40);
 		contentPane.add(comboBox);
 		
-		JLabel lblDigiteElNombre_1_1_1 = new JLabel("Precio por kilo");
-		lblDigiteElNombre_1_1_1.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblDigiteElNombre_1_1_1.setBounds(298, 282, 149, 27);
-		contentPane.add(lblDigiteElNombre_1_1_1);
+		JLabel costoUnidadLabel = new JLabel("Precio por kilo");
+		costoUnidadLabel.setFont(new Font("Arial", Font.PLAIN, 16));
+		costoUnidadLabel.setBounds(225, 282, 149, 27);
+		contentPane.add(costoUnidadLabel);
 		
-		JPanel panel = new JPanel();
-		panel.setBounds(266, 317, 214, 36);
-		contentPane.add(panel);
+		JLabel costoUnidad = new JLabel("");
+		costoUnidad.setBounds(255, 310, 50, 36);
+		contentPane.add(costoUnidad);
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(263, 395, 217, 38);
-		contentPane.add(panel_1);
+		JLabel totalLabel = new JLabel("Precio total");
+		totalLabel.setFont(new Font("Arial", Font.PLAIN, 16));
+		totalLabel.setBounds(445, 282, 99, 27);
+		contentPane.add(totalLabel);
 		
-		JButton btnNewButton_1 = new JButton("Vender");
+		JLabel total = new JLabel("");
+		total.setBounds(470, 310, 50, 38);
+		contentPane.add(total);
+		
+		JLabel gananciaCoopeLabel = new JLabel("Ganancia Coope");
+		gananciaCoopeLabel.setFont(new Font("Arial", Font.PLAIN, 16));
+		gananciaCoopeLabel.setBounds(225, 350, 149, 27);
+		contentPane.add(gananciaCoopeLabel);
+		
+		JLabel gananciaCoope = new JLabel("");
+		gananciaCoope.setBounds(255, 380, 50, 36);
+		contentPane.add(gananciaCoope);
+		
+		JLabel gananciaAgriLabel = new JLabel("Ganancia Agricultor");
+		gananciaAgriLabel.setFont(new Font("Arial", Font.PLAIN, 16));
+		gananciaAgriLabel.setBounds(445, 350, 149, 27);
+		contentPane.add(gananciaAgriLabel);
+		
+		JLabel gananciaAgri = new JLabel("");
+		gananciaAgri.setBounds(470, 380, 50, 36);
+		contentPane.add(gananciaAgri);
+		
+		JButton btnNewButton_1 = new JButton("Calcular");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String cultivo = (String) comboBox.getSelectedItem();
 				int cantidad = (int) spinner.getValue(); 
-				repository.VenderCultivo(cultivo, cantidad);
+				costoXunidad = sistema.calcularPrecioXKilo(cultivo, cantidad); 
+				valorTotal = (costoXunidad * cantidad) * 2; 
+				float gananciaCoopeValor = 15;
+				float gananciaAgricultorValor = 15;
+				if (costoXunidad != 0)
+				{
+					costoUnidad.setText(String.valueOf(costoXunidad));    
+					total.setText(String.valueOf(valorTotal)); 
+					gananciaCoope.setText(String.valueOf(gananciaCoopeValor));
+					gananciaAgri.setText(String.valueOf(gananciaAgricultorValor)); 
+					preciosCalculados = true;
+				}
 			}
 		});
 		
@@ -136,6 +170,29 @@ public class UiVender extends JFrame {
 		btnNewButton_1.setFont(new Font("Arial Black", Font.PLAIN, 22));
 		btnNewButton_1.setBounds(235, 458, 271, 46);
 		contentPane.add(btnNewButton_1);
+		
+		JButton btnNewButton_2= new JButton("Vender");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (preciosCalculados)
+				{
+					String cultivo = (String) comboBox.getSelectedItem();
+					int cantidad = (int) spinner.getValue(); 
+					sistema.VenderCultivo(cultivo, cantidad);
+					total.setText("");
+					costoUnidad.setText("");
+					gananciaAgri.setText("");
+					gananciaCoope.setText("");
+					preciosCalculados = false; 
+				}
+			}
+		});
+		
+		btnNewButton_2.setForeground(new Color(0, 0, 0));
+		btnNewButton_2.setBackground(new Color(0, 128, 255));
+		btnNewButton_2.setFont(new Font("Arial Black", Font.PLAIN, 22));
+		btnNewButton_2.setBounds(235, 558, 271, 46);
+		contentPane.add(btnNewButton_2);
 	}
 
 }
