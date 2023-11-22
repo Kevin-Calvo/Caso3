@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cooperativa Agrícola S.A.</title>
+    <link rel="stylesheet" href="style.css">
+
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Cooperativa Agrícola S.A.</h1>
+        <h2>Libreta de Agricultor</h2>
+    </header>
+
+    <main>
+        <p>Número de teléfono:</p>
+        <input type="text" id="telefono" placeholder="Digite su número de teléfono" class="telefono">
+        <button onclick="consultar()" class="consulta">Consultar</button>
+        
+        <div class="info">
+          
+          <div class="agricultor">
+            <table id="usuario">
+              <thead>
+                <tr>
+                  <th>Identificación</th>
+                  <th>Apellidos</th>
+                  <th>Nombre</th>
+                  <th>Fecha de ingreso</th>
+                  <th>Saldo (en colones)</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+            </table>
+          </div>
+          
+          <prod>Lista de Transacciones</prod>
+          
+          <div class="cult">
+            <table id="productos">
+              <thead>
+                <tr>
+                  <th>Fecha de cultivo</th>
+                  <th>Producto</th>
+                  <th>Costo/u</th>
+                  <th>Cantidad</th>
+                  <th>Monto total</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+        
+      </main>
+
+</body>
+</html>

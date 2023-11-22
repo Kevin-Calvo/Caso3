@@ -15,7 +15,7 @@ public class AgricultorRepository   {
 	private MongoDatabase database;
 	private MongoCollection<Document> collection;
 	
-	AgricultorRepository() {
+	public AgricultorRepository() {
 		 mongoClient = MongoClients.create("mongodb://localhost:27017"); //Conecta con mongo
 	     database = mongoClient.getDatabase("Cooperativa");  //conecta con base de datos 
 	     collection = database.getCollection("Agricultor"); //permite interaccion

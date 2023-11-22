@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Mongo.*;
+import Objetos.SistemaCentralizado;
 
 import javax.swing.JButton;
 import java.awt.Color;
@@ -34,7 +35,7 @@ public class UICultivo extends JFrame {
 
 	
 	public UICultivo() {
-		RepositoryFacade repository= RepositoryFacade.getRepositoryFacade();
+		SistemaCentralizado sistema = SistemaCentralizado.getSistemaCentralizado();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 788, 637);
@@ -121,7 +122,7 @@ public class UICultivo extends JFrame {
 		lblNewLabel_1_1.setBounds(164, 0, 541, 39);
 		contentPane.add(lblNewLabel_1_1);
 		
-		ArrayList<String> listaProducto = repository.obtenerListaNombreProducto();
+		ArrayList<String> listaProducto = sistema.obtenerListaNombreProducto();
 		String[] productos = listaProducto.toArray(new String[listaProducto.size()]);
 		JComboBox comboBox = new JComboBox();
 		comboBox.setModel(new DefaultComboBoxModel(productos)); 
@@ -157,7 +158,7 @@ public class UICultivo extends JFrame {
 		lblSeleccioneElNombre.setBounds(302, 444, 265, 27);
 		contentPane.add(lblSeleccioneElNombre);
 		
-		ArrayList<String> lista = repository.obtenerListaNombreAgricultor(); 
+		ArrayList<String> lista = sistema.obtenerListaNombreAgricultor(); 
 		String[] agricultores = lista.toArray(new String[lista.size()]); 
 		JComboBox comboBox_1 = new JComboBox();
 		comboBox_1.setBounds(316, 481, 216, 38);
@@ -195,7 +196,7 @@ public class UICultivo extends JFrame {
 				
 				String agricultor = (String) comboBox_1.getSelectedItem();
 				
-				repository.AgregarCultivo(cultivo, costo, cantidad, cosecha, porcentaje, agricultor); 
+				sistema.AgregarCultivoAIventarioYTransaccion(cultivo, costo, cantidad, cosecha, porcentaje, agricultor); 
 				
 				btnNewButton.setVisible(true);
 				dispose();
@@ -205,9 +206,9 @@ public class UICultivo extends JFrame {
 		
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { 
-				if (textField_2.getText() != "")
+				if (!(textField_2.getText()).isEmpty())
 				{
-					repository.AgregarProducto(textField_2.getText());
+					sistema.AgregarProducto(textField_2.getText());
 					textField_2.setText(""); 
 				}
 			}
