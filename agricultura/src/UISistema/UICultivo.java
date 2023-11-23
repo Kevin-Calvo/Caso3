@@ -6,6 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Controllers.AgricultorController;
+import Controllers.CultivoController;
 import Mongo.*;
 import Objetos.SistemaCentralizado;
 
@@ -32,11 +34,9 @@ public class UICultivo extends JFrame {
 	private JPanel contentPane;
 	private JTextField textField_1;
 	private JTextField textField;
-
+	private CultivoController controller = new CultivoController();
 	
-	public UICultivo() {
-		SistemaCentralizado sistema = SistemaCentralizado.getSistemaCentralizado();
-		
+	public UICultivo() {		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 788, 637);
 		contentPane = new JPanel();
@@ -87,10 +87,8 @@ public class UICultivo extends JFrame {
 		JButton btnNewButton = new JButton("Regresar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-	
 				btnNewButton.setVisible(true);
-				dispose();
-				
+				dispose();				
 			}
 		});
 		btnNewButton.setFont(new Font("Arial Black", Font.PLAIN, 16));
@@ -122,8 +120,7 @@ public class UICultivo extends JFrame {
 		lblNewLabel_1_1.setBounds(164, 0, 541, 39);
 		contentPane.add(lblNewLabel_1_1);
 		
-		ArrayList<String> listaProducto = sistema.obtenerListaNombreProducto();
-		String[] productos = listaProducto.toArray(new String[listaProducto.size()]);
+		String[] productos = controller.obtenerListaNombreProducto();
 		JComboBox comboBox = new JComboBox();
 		comboBox.setModel(new DefaultComboBoxModel(productos)); 
 		comboBox.setFont(new Font("Arial", Font.PLAIN, 16));
@@ -158,8 +155,8 @@ public class UICultivo extends JFrame {
 		lblSeleccioneElNombre.setBounds(302, 444, 265, 27);
 		contentPane.add(lblSeleccioneElNombre);
 		
-		ArrayList<String> lista = sistema.obtenerListaNombreAgricultor(); 
-		String[] agricultores = lista.toArray(new String[lista.size()]); 
+		
+		String[] agricultores = controller.obtenerListaAgricultores();
 		JComboBox comboBox_1 = new JComboBox();
 		comboBox_1.setBounds(316, 481, 216, 38);
 		comboBox_1.setModel(new DefaultComboBoxModel(agricultores));
@@ -169,34 +166,7 @@ public class UICultivo extends JFrame {
 		
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Date cosecha = null;
-				int costo = 0;
-				String cultivo = (String) comboBox.getSelectedItem();
-				
-				int cantidad = (int) spinner.getValue(); 
-				int porcentaje = (int) spinner1.getValue();
-				
-				SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-				try {
-					cosecha = formato.parse(textField.getText());
-				} catch (ParseException e1) {
-					// TODO Auto-generated catch block
-					System.out.println("Fecha no en formato correcto");
-					e1.printStackTrace();
-					return;
-				}
-				
-				try {
-					costo = Integer.parseInt(textField_1.getText()); 
-				} catch (NumberFormatException e1) {
-					System.out.println("Costo no es formato numerico");
-					e1.printStackTrace();
-					return; 
-				}
-				
-				String agricultor = (String) comboBox_1.getSelectedItem();
-				
-				sistema.AgregarCultivoAIventarioYTransaccion(cultivo, costo, cantidad, cosecha, porcentaje, agricultor); 
+				 controller.agregarCultivoInventario(comboBox, textField_1, spinner, textField, spinner1, comboBox_1);
 				
 				btnNewButton.setVisible(true);
 				dispose();
@@ -206,11 +176,7 @@ public class UICultivo extends JFrame {
 		
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) { 
-				if (!(textField_2.getText()).isEmpty())
-				{
-					sistema.AgregarProducto(textField_2.getText());
-					textField_2.setText(""); 
-				}
+				controller.agregarTipoCultivo(textField_2);
 			}
 		});
 			

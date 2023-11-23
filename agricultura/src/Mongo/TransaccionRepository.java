@@ -27,14 +27,14 @@ public class TransaccionRepository {
 	}
 	
 	
-	public void agregarTransaccion(Date fecha, String agricultor, String producto, int precioU, int cantidad, int total) {
+	public void agregarTransaccion(Date fecha, String agricultor, String producto, float precioU, float gananciaPorProducto, float gananciaAgricultores) {
 	     
 		 Document document = new Document("fecha", fecha)
 				 .append("agricultor", agricultor)//Crea tipo de dato a guardar en mongo
                 .append("producto", producto)
                 .append("precioUnidad", precioU)
-                .append("cantidad", cantidad)
-                .append("total", total);
+                .append("cantidad", gananciaPorProducto)
+                .append("total", gananciaAgricultores);
         collection.insertOne(document); //Mete dato en Mongo
 
         System.out.println("Documento insertado correctamente."); //Confirma insercion
@@ -54,9 +54,9 @@ public class TransaccionRepository {
                 transaccionInfo.add(formatoFecha.format(document.getDate("fecha")));
                 transaccionInfo.add(document.getString("agricultor")); 
                 transaccionInfo.add(document.getString("producto"));
-                transaccionInfo.add(String.valueOf(document.getInteger("precioUnidad"))); 
-                transaccionInfo.add(String.valueOf(document.getInteger("cantidad")));
-                transaccionInfo.add(String.valueOf(document.getInteger("total"))); 
+                transaccionInfo.add(String.valueOf(document.getDouble("precioUnidad").floatValue())); 
+                transaccionInfo.add(String.valueOf(document.getDouble("cantidad").floatValue()));
+                transaccionInfo.add(String.valueOf(document.getDouble("total").floatValue())); 
                 tabla.add(transaccionInfo); 
             }
             return tabla;

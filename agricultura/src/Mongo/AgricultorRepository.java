@@ -9,12 +9,12 @@ import org.bson.Document;
 
 import com.mongodb.client.*; 
 
-public class AgricultorRepository   {
+public class AgricultorRepository{
 	
 	private MongoClient mongoClient;
 	private MongoDatabase database;
 	private MongoCollection<Document> collection;
-	
+
 	public AgricultorRepository() {
 		 mongoClient = MongoClients.create("mongodb://localhost:27017"); //Conecta con mongo
 	     database = mongoClient.getDatabase("Cooperativa");  //conecta con base de datos 
@@ -36,7 +36,7 @@ public class AgricultorRepository   {
 	public ArrayList<String> obtenerListaNombres()
 	{
 		ArrayList<String> lista_agricultor = new ArrayList<>();
-		FindIterable<Document> documents =  collection.find();
+		FindIterable<Document> documents =  collection.find().sort(new Document("nombre", 1));
 
 		for (Document documento : documents) {
 			String nombre =documento.getString("nombre");
@@ -68,4 +68,6 @@ public class AgricultorRepository   {
         
         return tabla;
 	}
+
+	
 }

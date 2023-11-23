@@ -17,6 +17,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import Controllers.AgricultorController;
 import Objetos.SistemaCentralizado;
 
 import javax.swing.border.BevelBorder;
@@ -33,10 +34,9 @@ public class UIAgricultor extends JFrame {
 	private JTextField numero;
 	private JTextField zona;
 	private JTextField fecha;
+	private AgricultorController controller = new AgricultorController(); 
 	
-	public UIAgricultor() {
-		SistemaCentralizado sistema = SistemaCentralizado.getSistemaCentralizado();
-		
+	public UIAgricultor() {		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 956, 761);
 		contentPane = new JPanel();
@@ -76,7 +76,7 @@ public class UIAgricultor extends JFrame {
 		
 		table = new JTable();
 		table.setModel(new DefaultTableModel(
-				sistema.mostrarAgricultoresTabla(),
+				controller.obtenerTablaAgricultores(),
 			new String[] {
 				"Nombre", "Apellidos", "Identificacion", "Numero de Telefono", "Zona", "Fecha de Registro"
 			}
@@ -132,47 +132,7 @@ public class UIAgricultor extends JFrame {
 		JButton btnNewButton = new JButton("Agregar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String nombreAgricultor = nombre.getText();
-				String apellidoAgricultor = apellidos.getText();
-				int identifiacionAgricultor = 0;
-				int numeroAgricultor = 0;
-				String zonaAgricultor = zona.getText();
-				String fechaAgricultor = fecha.getText();
-				try {
-					identifiacionAgricultor = Integer.parseInt(identificacion.getText());
-				} catch (NumberFormatException e1) {
-					System.out.println("Identificacion no es formato numerico");
-					e1.printStackTrace();
-					return;
-				}
-				
-				try {
-					numeroAgricultor = Integer.parseInt(numero.getText());
-				} catch (NumberFormatException e1) {
-					System.out.println("Numero Telefonico no es formato numerico");
-					e1.printStackTrace();
-					return;
-				}
-				
-				if ((nombreAgricultor != "") && (apellidoAgricultor != "") && (zonaAgricultor != "") && (fechaAgricultor != ""))
-				{
-					sistema.agregarAgricultor(nombreAgricultor, apellidoAgricultor, identifiacionAgricultor, numeroAgricultor, zonaAgricultor, fechaAgricultor);
-					
-					nombre.setText("");
-					apellidos.setText("");
-					identificacion.setText("");
-					numero.setText("");
-					zona.setText("");
-					fecha.setText("");
-					
-					table.setModel(new DefaultTableModel(
-							sistema.mostrarAgricultoresTabla(),
-						new String[] {
-							"Nombre", "Apellidos", "Identificacion", "Numero de Telefono", "Zona", "Fecha de Registro"
-						}
-					));
-				}
-				
+				controller.agregarAgricultor(nombre, apellidos, identificacion, numero, zona, fecha, table); 
 				btnNewButton.setVisible(true);
 			}
 		});

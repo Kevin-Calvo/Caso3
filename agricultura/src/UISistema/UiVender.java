@@ -6,6 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Controllers.CultivoController;
+import Controllers.VenderController;
 import Mongo.InventarioRepository;
 import Objetos.SistemaCentralizado;
 
@@ -28,14 +30,9 @@ public class UiVender extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	boolean preciosCalculados = false;
-	float costoXunidad;
-	float valorTotal;
-
+	private VenderController controller = new VenderController();
 	
-	public UiVender() {
-		SistemaCentralizado sistema = SistemaCentralizado.getSistemaCentralizado();
-		
+	public UiVender() {	
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 761, 767);
 		contentPane = new JPanel();
@@ -68,8 +65,6 @@ public class UiVender extends JFrame {
 		lblDigiteElNombre_1.setBounds(245, 107, 261, 27);
 		contentPane.add(lblDigiteElNombre_1);
 		
-		
-		
 		JLabel lblDigiteLaCantidad_1 = new JLabel("Digite la cantidad de kilos a vender\r\n");
 		lblDigiteLaCantidad_1.setFont(new Font("Arial", Font.PLAIN, 16));
 		lblDigiteLaCantidad_1.setBounds(245, 195, 293, 27);
@@ -100,8 +95,8 @@ public class UiVender extends JFrame {
 		lblNewLabel_1_1.setBounds(131, 10, 541, 39);
 		contentPane.add(lblNewLabel_1_1);
 		
-		ArrayList<String> listaProducto = sistema.obtenerListaNombreProducto();
-		String[] productos = listaProducto.toArray(new String[listaProducto.size()]);
+		
+		String[] productos = controller.obtenerListaNombreProductos();
 		JComboBox comboBox = new JComboBox();
 		comboBox.setBackground(new Color(255, 255, 255));
 		comboBox.setFont(new Font("Arial", Font.PLAIN, 16));
@@ -148,20 +143,7 @@ public class UiVender extends JFrame {
 		JButton btnNewButton_1 = new JButton("Calcular");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String cultivo = (String) comboBox.getSelectedItem();
-				int cantidad = (int) spinner.getValue(); 
-				costoXunidad = sistema.calcularPrecioXKilo(cultivo, cantidad); 
-				valorTotal = (costoXunidad * cantidad) * 2; 
-				float gananciaCoopeValor = 15;
-				float gananciaAgricultorValor = 15;
-				if (costoXunidad != 0)
-				{
-					costoUnidad.setText(String.valueOf(costoXunidad));    
-					total.setText(String.valueOf(valorTotal)); 
-					gananciaCoope.setText(String.valueOf(gananciaCoopeValor));
-					gananciaAgri.setText(String.valueOf(gananciaAgricultorValor)); 
-					preciosCalculados = true;
-				}
+				controller.CalcularPrecioYGanancia(comboBox, spinner, costoUnidad, total, gananciaCoope, gananciaAgri);
 			}
 		});
 		
@@ -174,17 +156,7 @@ public class UiVender extends JFrame {
 		JButton btnNewButton_2= new JButton("Vender");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (preciosCalculados)
-				{
-					String cultivo = (String) comboBox.getSelectedItem();
-					int cantidad = (int) spinner.getValue(); 
-					sistema.VenderCultivo(cultivo, cantidad);
-					total.setText("");
-					costoUnidad.setText("");
-					gananciaAgri.setText("");
-					gananciaCoope.setText("");
-					preciosCalculados = false; 
-				}
+				controller.Vender(comboBox, spinner, costoUnidad, total, gananciaCoope, gananciaAgri); 
 			}
 		});
 		

@@ -31,4 +31,17 @@ public class Inventario {
 			return 0; 
 	}
 	
+	public float calcularGananciaAgricultor(String cultivo, int cantidad)
+	{
+		if (!repository.confirmarCantidadEnInventario(cantidad, cultivo)) 
+			return repository.calcularGananciaAgricultoresGeneral(cultivo, cantidad); 
+		else
+			return 0; 
+	}
+	
+	public void GenerarTransaccionesVenta(String cultivo, int cantidad, Transaccion transaccionControlador)
+	{
+		repository.generarTransacciones(cultivo, cantidad, transaccionControlador); 
+	}
+	
 }

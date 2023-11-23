@@ -11,6 +11,8 @@ import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
+import Objetos.Transaccion;
+
 public class InventarioRepository {
 	private MongoClient mongoClient;
 	private MongoDatabase database;
@@ -54,7 +56,6 @@ public class InventarioRepository {
 			if ((nombre_cultivo).trim().equals(cultivo.trim()))
 				cantidadInventario += documento.getInteger("cantidad"); 
 		}
-		System.out.println(cantidadInventario); 
 		return cantidadInventario < cantidadSolicitada;
 	}
 	
@@ -143,5 +144,81 @@ public class InventarioRepository {
 		precioXkilo = precioXkilo / cantidad;
 		
 		return precioXkilo;
+	}
+	
+	public float calcularGananciaAgricultoresGeneral(String cultivo, int cantidad)
+	{
+		int productosRestantes = cantidad; 
+		int gananciaAgricultores = 0;
+		FindIterable<Document> documents =  collection.find().sort(new Document("cosecha", 1));
+		for (Document documento : documents) {
+			if (productosRestantes == 0)
+				break;
+			else
+			{
+				String nombre_cultivo = documento.getString("cultivo");
+				if ((nombre_cultivo).trim().equals(cultivo.trim()))
+				{
+					if (documento.getInteger("cantidad") <= productosRestantes)
+					{
+						productosRestantes -= documento.getInteger("cantidad");
+						float precioTotal = (documento.getInteger("cantidad") * documento.getInteger("costo"));
+						float porcentajeAgricultores = (100 - documento.getInteger("porcentajeGanancia")) ;
+						gananciaAgricultores += (precioTotal * porcentajeAgricultores)/100 ; 
+					}
+					else
+					{
+						float precioTotal = (productosRestantes * documento.getInteger("costo"));
+						float porcentajeAgricultores = (100 - documento.getInteger("porcentajeGanancia")) ;
+						
+						gananciaAgricultores += (precioTotal * porcentajeAgricultores)/100;
+						productosRestantes = 0;
+					}	
+				}
+			}
+			
+		}
+		
+		return gananciaAgricultores;
+	}
+	
+	public void generarTransacciones(String cultivo, int cantidad, Transaccion transaccionControlador)
+	{
+		int productosRestantes = cantidad; 
+		FindIterable<Document> documents =  collection.find().sort(new Document("cosecha", 1));
+		for (Document documento : documents) {
+			float gananciaAgricultores = 0; 
+			if (productosRestantes == 0)
+				break;
+			else
+			{
+				String nombre_cultivo = documento.getString("cultivo");
+				if ((nombre_cultivo).trim().equals(cultivo.trim()))
+				{
+					if (documento.getInteger("cantidad") <= productosRestantes)
+					{
+						productosRestantes -= documento.getInteger("cantidad");
+						float precioTotal = (documento.getInteger("cantidad") * documento.getInteger("costo"));
+						float porcentajeAgricultores = (100 - documento.getInteger("porcentajeGanancia")) ;
+						float gananciaPorProducto = (documento.getInteger("costo") * porcentajeAgricultores) / 100;
+						gananciaAgricultores = (precioTotal * porcentajeAgricultores)/100 ; 
+						transaccionControlador.agregarTransaccion(new Date(), documento.getString("agricultor"), cultivo,
+								gananciaPorProducto, documento.getInteger("cantidad"), gananciaAgricultores*-1);
+					}
+					else
+					{
+						float precioTotal = (productosRestantes * documento.getInteger("costo"));
+						float porcentajeAgricultores = (100 - documento.getInteger("porcentajeGanancia")) ;
+						float gananciaPorProducto = (documento.getInteger("costo") * porcentajeAgricultores) / 100;
+						gananciaAgricultores = (precioTotal * porcentajeAgricultores)/100;
+						transaccionControlador.agregarTransaccion(new Date(), documento.getString("agricultor"), cultivo, 
+								gananciaPorProducto, productosRestantes, gananciaAgricultores*-1);
+						productosRestantes = 0;
+					}	
+				}
+			}
+			
+		}
+		System.out.println("Transaccion Hecha"); 
 	}
 }

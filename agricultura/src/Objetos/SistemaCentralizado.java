@@ -36,18 +36,23 @@ private static SistemaCentralizado sistema = new SistemaCentralizado();
 	}
 
 	public void VenderCultivo(String cultivo, int cantidad) {
+		inventario.GenerarTransaccionesVenta(cultivo, cantidad, transaccion); 
 		inventario.venderCultivo(cultivo, cantidad);  
 	}
 	
 	public float calcularPrecioXKilo(String cultivo, int cantidad) {
 		return inventario.calcularPrecioKilo(cantidad, cultivo); 
 	}
+	
+	public float gananciaAgricultor(String cultivo, int cantidad) {
+		return inventario.calcularGananciaAgricultor(cultivo, cantidad); 
+	}
 
 	public void agregarAgricultor(String nombre, String apellidos, int identificacion, int numero, String zona, String fecha) {
 		agricultor.agregarAgricultor(nombre, apellidos, identificacion, numero, zona, fecha); 
 	}
 
-	public void agregarTransaccion(Date fecha, String agricultorNombre, String productoNombre, int precioU, int cantidad, int total) {
+	public void agregarTransaccion(Date fecha, String agricultorNombre, String productoNombre, float precioU, float cantidad, float total) {
 		transaccion.agregarTransaccion(fecha, agricultorNombre, productoNombre, precioU, cantidad, total); 
 	}
 

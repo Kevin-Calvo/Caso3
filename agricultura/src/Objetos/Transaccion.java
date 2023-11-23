@@ -12,8 +12,8 @@ public class Transaccion {
 		this.repository = new TransaccionRepository();
 	}
 	
-	public void agregarTransaccion(Date fecha, String agricultor, String producto, int precioU, int cantidad, int total) {
-		repository.agregarTransaccion(fecha, agricultor, producto, precioU, cantidad, total); 
+	public void agregarTransaccion(Date fecha, String agricultor, String producto, float precioU, float gananciaPorProducto, float gananciaAgricultores) {
+		repository.agregarTransaccion(fecha, agricultor, producto, precioU, gananciaPorProducto, gananciaAgricultores); 
 	}
 	
 	public List<List<String>> obtenerListaTransacciones(){

@@ -14,6 +14,8 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.table.DefaultTableModel;
 
+import Controllers.AgricultorController;
+import Controllers.ServiciosController;
 import Objetos.SistemaCentralizado;
 
 import javax.swing.ListSelectionModel;
@@ -39,13 +41,11 @@ public class UIServicioDisponible extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTable table;
-	private JTable table_1;
 	int total;
+	private ServiciosController controller = new ServiciosController(); 
 
 
-	public UIServicioDisponible() {
-		SistemaCentralizado sistema = SistemaCentralizado.getSistemaCentralizado();
-	
+	public UIServicioDisponible() {	
 		setBackground(new Color(255, 255, 255));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 954, 587);
@@ -76,7 +76,7 @@ public class UIServicioDisponible extends JFrame {
 		
 		table = new JTable();
 		table.setModel(new DefaultTableModel(
-				sistema.mostrarTransaccionesTabla(),
+				controller.obtenerTablaTransacciones(),
 			new String[] {
 				"Fecha", "Agricultor", "Producto", "Precio por unidad", "Cantidad", "Total"
 			}
@@ -107,8 +107,8 @@ public class UIServicioDisponible extends JFrame {
 		contentPane.add(fecha_textfield);
 		fecha_textfield.setColumns(10);
 		
-		ArrayList<String> lista = sistema.obtenerListaNombreAgricultor(); 
-		String[] agricultores = lista.toArray(new String[lista.size()]); 
+		
+		String[] agricultores = controller.obtenerListaAgricultor();
 		JComboBox comboBox_1 = new JComboBox();
 		comboBox_1.setBounds(250, 350, 100, 28);
 		comboBox_1.setModel(new DefaultComboBoxModel(agricultores));
@@ -143,27 +143,7 @@ public class UIServicioDisponible extends JFrame {
 		JButton btnNewButton2 = new JButton("Calcular");
 		btnNewButton2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int cantidad;
-				try {
-					 cantidad = Integer.parseInt(cantidad_textfield.getText());
-				} catch (NumberFormatException e1) {
-					System.out.println("Cantidad no es formato numerico");
-					e1.printStackTrace();
-					return;
-				}
-				
-				int precioU;
-				try {
-					precioU = Integer.parseInt(precioU_textfield.getText());
-				} catch (NumberFormatException e1) {
-					System.out.println("Cantidad no es formato numerico");
-					e1.printStackTrace();
-					return;
-				}
-				
-				total = cantidad * precioU; 
-				String totalStr = String.valueOf(total);
-				totalLabel.setText(totalStr);
+				controller.calcularTotalTransaccion(cantidad_textfield, precioU_textfield, totalLabel); 
 			}
 			
 		}); 
@@ -176,47 +156,7 @@ public class UIServicioDisponible extends JFrame {
 		JButton btnNewButton1 = new JButton("Agregar");
 		btnNewButton1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Date fecha = null;
-				SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-				try {
-					fecha = formato.parse(fecha_textfield.getText());
-				} catch (ParseException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				} 
-				
-				int cantidad;
-				try {
-					 cantidad = Integer.parseInt(cantidad_textfield.getText());
-				} catch (NumberFormatException e1) {
-					System.out.println("Cantidad no es formato numerico");
-					e1.printStackTrace();
-					return;
-				}
-				
-				int precioU;
-				try {
-					precioU = Integer.parseInt(precioU_textfield.getText());
-				} catch (NumberFormatException e1) {
-					System.out.println("Cantidad no es formato numerico");
-					e1.printStackTrace();
-					return;
-				}
-				
-				String agricultor = (String) comboBox_1.getSelectedItem();
-				String producto = producto_textfield.getText(); 
-				 
-				
-				if (producto != "") {
-					sistema.agregarTransaccion(fecha, agricultor, producto, precioU, cantidad, total);
-					producto_textfield.setText("");
-					table.setModel(new DefaultTableModel(
-							sistema.mostrarTransaccionesTabla(),
-						new String[] {
-							"Fecha", "Agricultor", "Producto", "Precio por unidad", "Cantidad", "Total"
-						}
-					));
-				}
+				controller.registrarTransaccion(fecha_textfield, cantidad_textfield, precioU_textfield, comboBox_1, producto_textfield, table, totalLabel);
 			}}); 
 		
 		btnNewButton1.setBackground(new Color(0, 128, 0));
